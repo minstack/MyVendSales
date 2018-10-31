@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipToPadding="false"
+    android:orientation="vertical"
+    android:elevation="10sp"
+    android:outlineProvider="bounds">
+
+    <TextView
+        android:id="@+id/txtOutletName"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="5sp"
+        android:layout_marginRight="5sp"
+        android:layout_weight="1"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:text="Outlet Name"
+        android:textColor="@color/white"
+        android:textFontWeight="bold"
+        android:textSize="20dp"
+        />
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="5sp"
+        android:layout_marginRight="5sp"
+        >
+
+        <TextView
+            android:id="@+id/txtNumSales"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/vendLight"
+            android:gravity="right"
+            android:text="Num Sales"
+            android:textSize="18dp"
+             />
+
+        <TextView
+            android:id="@+id/txtTotalSales"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingRight="5sp"
+            android:background="@color/vendLight"
+            android:gravity="right"
+            android:text="Total Sales"
+            android:textSize="18dp"/>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
