@@ -19,17 +19,14 @@
         android:text="Outlet Name"
         android:textColor="@color/white"
         android:textFontWeight="bold"
-        android:textSize="20dp"
-        />
+        android:textSize="20dp" />
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginLeft="5sp"
-        android:layout_marginRight="5sp"
-        >
+        android:layout_marginRight="5sp">
 
         <TextView
             android:id="@+id/txtNumSales"
@@ -39,8 +36,7 @@
             android:background="@color/vendLight"
             android:gravity="right"
             android:text="Num Sales"
-            android:textSize="18dp"
-             />
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/txtTotalSales"
@@ -51,11 +47,10 @@
             android:background="@color/vendLight"
             android:gravity="right"
             android:text="Total Sales"
-            android:textSize="18dp"/>
+            android:textSize="18dp" />
 
 
     </LinearLayout>
-
 
 
 </LinearLayout>

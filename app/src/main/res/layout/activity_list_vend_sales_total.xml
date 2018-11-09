@@ -27,7 +27,7 @@
         android:layout_height="487dp"
         android:divider="@android:color/transparent"
         android:dividerHeight="20dp"
-        android:clipToPadding="false"/>
+        android:clipToPadding="false" />
 
 
 </LinearLayout>
