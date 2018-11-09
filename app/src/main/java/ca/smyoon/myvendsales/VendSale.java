@@ -6,11 +6,12 @@
 package ca.smyoon.myvendsales;
 
 /**
+ *  A POJO representing a retailer's sales to be able to easily map JSON key values.
  *
- * @author SM-MAIN
+ * @author Sung Min Yoon
  */
 public class VendSale {
-    
+
     private String id;
     private String outlet_id;
     private String register_id;
@@ -182,7 +183,6 @@ public class VendSale {
     public void setDeleted_at(String deleted_at) {
         this.deleted_at = deleted_at;
     }
-    
-    
-    
+
+
 }

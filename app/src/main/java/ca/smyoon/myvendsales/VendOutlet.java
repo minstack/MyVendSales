@@ -6,11 +6,12 @@
 package ca.smyoon.myvendsales;
 
 /**
+ * A POJO representing a retailer's outlet to be able to easily map JSON key values.
  *
- * @author SM-MAIN
+ * @author Sung Min Yoon
  */
 public class VendOutlet {
-    
+
     private String id;
     private String name;
     private String default_tax_id;
@@ -103,7 +104,7 @@ public class VendOutlet {
     }
 
     public void incrementNumSales() {
-        this.numSales ++;
+        this.numSales++;
     }
 
 }

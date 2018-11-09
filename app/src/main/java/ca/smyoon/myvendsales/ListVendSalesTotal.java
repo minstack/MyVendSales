@@ -21,6 +21,13 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Activity that displays retailers sale data based on their outlets.
+ *
+ * @author Sung Min Yoon
+ * @see VendSale
+ * @see VendOutlet
+ */
 public class ListVendSalesTotal extends AppCompatActivity {
 
     private String domain;
@@ -40,10 +47,12 @@ public class ListVendSalesTotal extends AppCompatActivity {
         this.header = findViewById(R.id.dateRange);
         //this.header.setText(mainIntent.getStringExtra("domain"));
 
-        Type outletsListType = new TypeToken<List<VendOutlet>>() {}.getType();
-        this.outlets = new Gson().fromJson(mainIntent.getStringExtra("outletsList"),outletsListType);
+        Type outletsListType = new TypeToken<List<VendOutlet>>() {
+        }.getType();
+        this.outlets = new Gson().fromJson(mainIntent.getStringExtra("outletsList"), outletsListType);
 
-        Type salesListType = new TypeToken<List<VendSale>>() {}.getType();
+        Type salesListType = new TypeToken<List<VendSale>>() {
+        }.getType();
         this.sales = new Gson().fromJson(mainIntent.getStringExtra("salesList"), salesListType);
 
         initIdToOutletMap();
@@ -66,7 +75,6 @@ public class ListVendSalesTotal extends AppCompatActivity {
     }
 
     private void sortOutletsBySalesDesc() {
-
 
         Collections.sort(this.outlets, new Comparator<VendOutlet>() {
             @Override
@@ -91,13 +99,10 @@ public class ListVendSalesTotal extends AppCompatActivity {
 
         title.setTextColor(Color.WHITE);
         title.setTextSize(20);
-        title.setTypeface(null,Typeface.BOLD);
+        title.setTypeface(null, Typeface.BOLD);
         actionBar.setCustomView(title);
 
         this.header.setText(dateRange);
-
-        //this.header.setText(this.domain.toUpperCase() + " Sales: " + dateRange);
-        //getActionBar().setTitle(this.domain.toUpperCase() + " Sales: " + dateRange);
 
     }
 
@@ -117,7 +122,7 @@ public class ListVendSalesTotal extends AppCompatActivity {
 
     private void listOutlets() {
         VendOutletsAdapter voa = new VendOutletsAdapter(ListVendSalesTotal.this, this.outlets);
-        ((ListView)findViewById(R.id.lstVendOutlets)).setAdapter(voa);
+        ((ListView) findViewById(R.id.lstVendOutlets)).setAdapter(voa);
     }
 
 

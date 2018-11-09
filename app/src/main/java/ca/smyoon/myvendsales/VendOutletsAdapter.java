@@ -9,7 +9,13 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class VendOutletsAdapter extends BaseAdapter{
+/**
+ * Customer adapter to be used to populate outlet and basic sales number.
+ *
+ * @author Sung Min Yoon
+ * @see VendOutlet
+ */
+public class VendOutletsAdapter extends BaseAdapter {
 
     private ArrayList<VendOutlet> outlets = new ArrayList<>();
     private Context context;
@@ -50,7 +56,6 @@ public class VendOutletsAdapter extends BaseAdapter{
         String totalAmount = "%s%.2f(%s)";
 
         txtOutName.setText(tempOut.getName());
-        //temporary until aglo of calculating total for each outlet is done and put into vendoutlet class
         txtTotal.setText(String.format(totalAmount, tempOut.getCurrency_symbol(), tempOut.getTotalSales(), tempOut.getCurrency()));
         txtNumSales.setText(String.format("Total sales: %s", tempOut.getNumSales()));
 

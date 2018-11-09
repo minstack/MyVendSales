@@ -35,6 +35,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+/**
+ * The main activity that gets user input of store domain prefix, token and date range
+ * to retrieve necessary information of their store.  Starts ListVendSalesTotal to display the sales
+ * per outlet.
+ *
+ * @author Sung Min Yoon
+ * @see ListVendSalesTotal
+ * @see VendInfoRetriever
+ */
 public class GetVendInfoActivity extends AppCompatActivity {
 
     ProgressBar vendSalesLoadBar;
@@ -164,132 +173,8 @@ public class GetVendInfoActivity extends AppCompatActivity {
         enableGetInfoMode();
     }
 
-   /* public void onClickMyVendSales(View v) {
-        String errorMsg = "";
-
-       // try {
-
-         //   if (!validDates()) {
-          //      errorMsg = "Date from must be same or before date to.";
-          //  } else {
-                //enableListVendSalesMode();
-
-                try {
-
-                    @SuppressLint("StaticFieldLeak") ArrayList<VendOutlet> outlets =  (ArrayList<VendOutlet>) new AsyncTask<Void, Void, Object[]>() {
-                        @Override
-                        protected void onPreExecute() {
-                            enableListVendSalesMode();
-                        }
-
-                        @Override
-                        protected Object[] doInBackground(Void... voids) {
-                            return new Object[]{getVendInfo(), getVendSales()};
-                        }
-
-                        @Override
-                        protected void onPostExecute(Object[] result) {
-                            //outlets
-                            if (result[0] == null) {
-                                return;
-                            }
-
-                            mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            mainIntent.putExtra("outletsList", getOutletsJsonString((ArrayList<VendOutlet>)result[0]));
-
-                            mainIntent.putExtra("salesList", getSaleJsonString((ArrayList<VendSale>)result[1]));
-
-                            startActivity(mainIntent);
-
-                            enableGetInfoMode();
-                        }
-
-                    }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, null).get()[0];
-
-                    if (outlets == null) {
-                        throw new Exception("Please check your network, domain and token.");
-                    }
-
-                    setIntentExtras();
-                    saveUserInput(this.domain.getText().toString(), this.token.getText().toString());
-
-
-
-                } catch (IllegalArgumentException e) {
-                    errorMsg = e.getLocalizedMessage();
-                } catch (IOException e) {
-                    errorMsg = "Please check your network connection.";
-                } catch (Exception e) {
-                    errorMsg = e.getLocalizedMessage();
-                }
-
-      // // } catch (ParseException e) {
-      //      errorMsg = "Something went terribly wrong, please contact support.";
-  //
-      //  }
-
-
-
-        if (!errorMsg.isEmpty()) {
-            Toast.makeText(GetVendInfoActivity.this, errorMsg, Toast.LENGTH_LONG).show();
-            enableGetInfoMode();
-        }
-
-
-
-    }*/
-
-    /*public void onClickMyVendSales(View v) {
-        String errorMsg = "";
-
-        // try {
-
-        //   if (!validDates()) {
-        //      errorMsg = "Date from must be same or before date to.";
-        //  } else {
-        //enableListVendSalesMode();
-
-        try {
-            if (getVendInfo() == null) {
-                throw new Exception("Please check your network, domain and token.");
-            }
-
-            setIntentExtras();
-            getVendSales();
-
-            saveUserInput(this.domain.getText().toString(), this.token.getText().toString());
-        } catch (IllegalArgumentException e) {
-            errorMsg = e.getLocalizedMessage();
-        } catch (IOException e) {
-            errorMsg = "Please check your network connection.";
-        } catch (Exception e) {
-            errorMsg = e.getLocalizedMessage();
-        }
-        //}
-        //} catch (ParseException e) {
-        //     errorMsg = "Something went terribly wrong, please contact support.";
-        // }
-
-        if (!errorMsg.isEmpty()) {
-            Toast.makeText(GetVendInfoActivity.this, errorMsg, Toast.LENGTH_LONG).show();
-            enableGetInfoMode();
-        }
-
-
-
-        enableGetInfoMode();
-    }*/
-
     public void onClickMyVendSales(View v) {
         String errorMsg = "";
-
-        //enableListVendSalesMode();
-        // try {
-
-        //   if (!validDates()) {
-        //      errorMsg = "Date from must be same or before date to.";
-        //  } else {
-        //enableListVendSalesMode();
 
         try {
             Exception retreiveError = getVendInfo();
@@ -309,18 +194,12 @@ public class GetVendInfoActivity extends AppCompatActivity {
         } catch (Exception e) {
             errorMsg = e.getLocalizedMessage();
         }
-        //}
-        //} catch (ParseException e) {
-        //     errorMsg = "Something went terribly wrong, please contact support.";
-        // }
 
         if (!errorMsg.isEmpty()) {
             Toast.makeText(GetVendInfoActivity.this, errorMsg, Toast.LENGTH_LONG).show();
             enableGetInfoMode();
         }
 
-
-        // enableGetInfoMode();
     }
 
     //not sure
@@ -378,26 +257,6 @@ public class GetVendInfoActivity extends AppCompatActivity {
         domain.setFocusableInTouchMode(focusable);
     }
 
-/*    public ArrayList<VendOutlet> getVendInfo() {
-        this.vendApi = new VendInfoRetriever(this.token.getText().toString()
-                , this.domain.getText().toString());
-
-        try {
-            return this.vendApi.getOutlets();
-        } catch (Exception e) {
-            //showToast(e.getLocalizedMessage());
-        }
-
-        return null;
-    }*/
-
-    /*public ArrayList<VendOutlet> getVendInfo() throws Exception {
-        this.vendApi = new VendInfoRetriever(this.token.getText().toString()
-                , this.domain.getText().toString());
-
-        return new RetrieveVendOutletsTask().execute(this.vendApi).get();
-    }*/
-
     public Exception getVendInfo() throws Exception {
         this.vendApi = new VendInfoRetriever(this.token.getText().toString()
                 , this.domain.getText().toString());
@@ -418,17 +277,6 @@ public class GetVendInfoActivity extends AppCompatActivity {
         return new Gson().toJson(sales);
     }
 
-/*    public ArrayList<VendSale> getVendSales() {
-        try {
-            return this.vendApi.getSales();
-        }
-        catch(Exception e) {
-            //showToast(e.getLocalizedMessage());
-        }
-
-        return null;
-    }*/
-
     private void showToast(String localizedMessage) {
         Toast.makeText(GetVendInfoActivity.this, localizedMessage, Toast.LENGTH_LONG).show();
     }
@@ -440,68 +288,6 @@ public class GetVendInfoActivity extends AppCompatActivity {
     public void setDomain(String domain) {
         mainIntent.putExtra("domain", domain);
     }
-
-/*    private class RetrieveVendOutletsTask extends AsyncTask<VendInfoRetriever, Void, ArrayList<VendOutlet>> {
-
-        @Override
-        protected  void onPreExecute() {
-            enableListVendSalesMode();
-        }
-
-        @Override
-        protected ArrayList<VendOutlet> doInBackground(VendInfoRetriever... apiCall) {
-            try {
-                return apiCall[0].getOutlets();
-            } catch(Exception e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        protected void onPostExecute(ArrayList<VendOutlet> outlets) {
-            if (outlets == null) {
-                return;
-            }
-
-            mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-            mainIntent.putExtra("outletsList", getOutletsJsonString(outlets));
-
-            //i.putExtra("domain", this.domain.getText().toString());
-
-            //startActivity(i);
-        }
-
-    }*/
-
- /*   private class RetreiveVendSalesTask extends AsyncTask<VendInfoRetriever, Void, ArrayList<VendSale>> {
-
-
-        @Override
-        protected ArrayList<VendSale> doInBackground(VendInfoRetriever... apiCall) {
-            try {
-                return apiCall[0].getSales();
-            } catch(Exception e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        protected void onPostExecute(ArrayList<VendSale> sales) {
-            if (sales == null) {
-                return;
-            }
-
-            mainIntent.putExtra("salesList", getSaleJsonString(sales));
-
-            //i.putExtra("domain", this.domain.getText().toString());
-
-            startActivity(mainIntent);
-
-            enableGetInfoMode();
-        }
-
-    }*/
 
     private class RetrieveVendOutletsTask extends AsyncTask<Object, Void, Boolean> {
 
@@ -553,51 +339,14 @@ public class GetVendInfoActivity extends AppCompatActivity {
                 return;
             }
 
-//            mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
             mainIntent.putExtra("outletsList", this.outletsJson);
             mainIntent.putExtra("salesList", this.salesJson);
-
-            //i.putExtra("domain", this.domain.getText().toString());
 
             startActivity(this.mainIntent);
             enableGetInfoMode();
         }
 
     }
-
-   /* private class RetrieveVendOutletsTask extends AsyncTask<VendInfoRetriever, Void, ArrayList<VendOutlet>> {
-
-        @Override
-        protected  void onPreExecute() {
-            enableListVendSalesMode();
-        }
-
-        @Override
-        protected ArrayList<VendOutlet> doInBackground(VendInfoRetriever... apiCall) {
-            try {
-                return apiCall[0].getOutlets();
-            } catch(Exception e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        protected void onPostExecute(ArrayList<VendOutlet> outlets) {
-            if (outlets == null) {
-                return;
-            }
-
-            mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-            mainIntent.putExtra("outletsList", getOutletsJsonString(outlets));
-
-            //i.putExtra("domain", this.domain.getText().toString());
-
-            //startActivity(i);
-        }
-
-    }*/
 
     private class RetreiveVendSalesTask extends AsyncTask<VendInfoRetriever, Void, ArrayList<VendSale>> {
 
@@ -614,17 +363,9 @@ public class GetVendInfoActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(ArrayList<VendSale> sales) {
-           /* if (sales == null) {
-                return;
-            }
-*/
             mainIntent.putExtra("salesList", getSaleJsonString(sales));
 
-            //i.putExtra("domain", this.domain.getText().toString());
-
             startActivity(mainIntent);
-
-
         }
 
     }

@@ -6,11 +6,12 @@
 package ca.smyoon.myvendsales;
 
 /**
+ * A POJO representing a retailer's register to be able to easily map JSON key values.
  *
- * @author SM-MAIN
+ * @author Sung Min Yoon
  */
 public class VendRegister {
-    
+
     private String id;
     private String name;
     private String outlet_id;
@@ -209,6 +210,6 @@ public class VendRegister {
     public void setCash_management_payment_type_id(String cash_management_payment_type_id) {
         this.cash_management_payment_type_id = cash_management_payment_type_id;
     }
-    
-    
+
+
 }
