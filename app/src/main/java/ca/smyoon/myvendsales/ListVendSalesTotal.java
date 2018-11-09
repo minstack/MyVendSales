@@ -56,6 +56,10 @@ public class ListVendSalesTotal extends AppCompatActivity {
         this.sales = new Gson().fromJson(mainIntent.getStringExtra("salesList"), salesListType);
 
         initIdToOutletMap();
+        calculateTotals();
+        sortOutletsBySalesDesc();
+        listOutlets();
+        setHeaders();
     }
 
     private void initIdToOutletMap() {
@@ -68,10 +72,15 @@ public class ListVendSalesTotal extends AppCompatActivity {
     protected void onStart() {
 
         super.onStart();
-        calculateTotals();
+        /*calculateTotals();
         sortOutletsBySalesDesc();
         listOutlets();
-        setHeaders();
+        setHeaders();*/
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     private void sortOutletsBySalesDesc() {
