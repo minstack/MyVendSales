@@ -317,6 +317,7 @@ public class GetVendInfoActivity extends AppCompatActivity {
 
             try {
                 ArrayList<VendOutlet> vendOutlets = vinfo.getOutlets();
+                Log.d("outlets", vendOutlets.toString());
 
                 if (vendOutlets == null) {
                     throw new Exception("Invalid token or store domain.");

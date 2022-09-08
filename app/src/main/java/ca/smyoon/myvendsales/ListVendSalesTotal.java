@@ -120,9 +120,10 @@ public class ListVendSalesTotal extends AppCompatActivity {
         for (VendSale sale : this.sales) {
             VendOutlet currOutlet = this.idToOutlet.get(sale.getOutlet_id());
 
-            if (sale.getStatus().contains("VOIDED")) {
+            if (sale.getStatus().contains("VOIDED") || sale.getStatus().contains("SAVED")) {
                 continue;
             }
+            
             currOutlet.addSaleTotal(sale.getTotal_price());
             currOutlet.incrementNumSales();
         }

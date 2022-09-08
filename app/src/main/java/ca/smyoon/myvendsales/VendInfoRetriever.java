@@ -155,6 +155,7 @@ public class VendInfoRetriever {
             myURLConnection.connect();
 
             int responseCode = myURLConnection.getResponseCode();
+            Log.d("ResponseCode", "" + responseCode);
 
             switch (responseCode) {
                 case 200: {

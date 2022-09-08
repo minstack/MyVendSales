@@ -18,8 +18,7 @@
         android:gravity="center"
         android:text="Outlet Name"
         android:textColor="@color/white"
-        android:textFontWeight="bold"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
